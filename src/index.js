@@ -3,18 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import '@ant-design/pro-form/dist/form.css';
 import '@ant-design/pro-layout/dist/layout.css';
 import '@ant-design/pro-table/dist/table.css';
 import '@ant-design/pro-card/dist/card.css';
+import Login from "./pages/user/Login";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <App/>
+            <Routes>
+                <Route path="/user/login" element={<Login/>}/>
+                <Route path="*" element={<App/>}/>
+            </Routes>
         </BrowserRouter>
     </React.StrictMode>
 );

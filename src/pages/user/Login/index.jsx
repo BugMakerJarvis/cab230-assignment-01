@@ -41,7 +41,7 @@ const Login = () => {
                                 volcanoes of the world
                             </span>
                         }
-                        style={{textAlign: "center", backgroundColor: "transparent"}}
+                        style={{textAlign: "center", backgroundColor: "transparent", color: "white"}}
                         bordered={false}
                     >
                         <Form size="large" onFinish={handleSubmit} onFinishFailed={onFinishFailed}>

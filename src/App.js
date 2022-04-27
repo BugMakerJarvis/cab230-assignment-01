@@ -1,7 +1,6 @@
 import './App.css';
 import ProLayout from '@ant-design/pro-layout';
-import {OrderedListOutlined, SmileOutlined, UserOutlined} from "@ant-design/icons";
-import {Avatar} from "antd";
+import {OrderedListOutlined, SmileOutlined} from "@ant-design/icons";
 import {Routes, Route, Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router";
@@ -11,7 +10,6 @@ import Welcome from "./pages/Welcome";
 import VolcanoList from "./pages/volcano/List";
 import VolcanoInfo from "./pages/volcano/Info";
 import NoFoundPage from "./pages/NoFoundPage";
-import Login from "./pages/user/Login";
 
 function Redirect({to}) {
     let navigate = useNavigate();
@@ -61,7 +59,8 @@ function App() {
             footerRender={() => <Footer/>}
             rightContentRender={() => (
                 <div>
-                    <Avatar shape="square" size="default" icon={<UserOutlined/>}/>
+                    {/*<Avatar shape="square" size="default" icon={<UserOutlined/>}/>*/}
+                    <Link to="/user/login">ds</Link>
                 </div>
             )}
             menuItemRender={(item, dom) => (
@@ -73,7 +72,6 @@ function App() {
             <Routes>
                 <Route path="/" element={<Redirect to="/welcome"/>}/>
                 <Route path="/welcome" element={<Welcome/>}/>
-                <Route path="/user/login" element={<Login/>}/>
                 <Route path="/volcano/list" element={<VolcanoList/>}/>
                 <Route path="/volcano/info/:name/:latitude/:longitude" element={<VolcanoInfo/>}/>
                 <Route path="*" element={<NoFoundPage/>}/>

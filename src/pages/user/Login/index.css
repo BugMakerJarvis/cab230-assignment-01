@@ -6,12 +6,12 @@
     background-image: url("https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/DCTM_Penguin_UK_DK_AL327682_tso68j.jpg");
 }
 
-.ant-form-item-label > label {
+.ant-form-large .ant-form-item-label > label {
     color: white;
-    font-size: x-large;
+    font-size: large;
 }
 
-.ant-form-item-explain-error {
+.ant-form-large .ant-form-item-explain-error {
     color: white;
     text-align: end;
 }

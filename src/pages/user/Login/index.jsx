@@ -20,7 +20,8 @@ const Login = () => {
             if (!res.error) {
                 pushToWelcome();
                 message.success('Login successful!');
-                // setInitialState((s) => ({...s, currentUser: values}));
+                localStorage.setItem("token", res.token);
+                localStorage.setItem("currentUserEmail", values.email);
             }
         } catch (error) {
             message.error('Login failed, please try again!');
@@ -41,7 +42,7 @@ const Login = () => {
                                 volcanoes of the world
                             </span>
                         }
-                        style={{textAlign: "center", backgroundColor: "transparent", color: "white"}}
+                        style={{textAlign: "center", backgroundColor: "transparent"}}
                         bordered={false}
                     >
                         <Form size="large" onFinish={handleSubmit} onFinishFailed={onFinishFailed}>

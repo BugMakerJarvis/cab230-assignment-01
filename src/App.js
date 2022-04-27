@@ -10,6 +10,7 @@ import Welcome from "./pages/Welcome";
 import VolcanoList from "./pages/volcano/List";
 import VolcanoInfo from "./pages/volcano/Info";
 import NoFoundPage from "./pages/NoFoundPage";
+import RightContent from "./components/RightContent";
 
 function Redirect({to}) {
     let navigate = useNavigate();
@@ -57,12 +58,7 @@ function App() {
             iconfontUrl=""
             route={route}
             footerRender={() => <Footer/>}
-            rightContentRender={() => (
-                <div>
-                    {/*<Avatar shape="square" size="default" icon={<UserOutlined/>}/>*/}
-                    <Link to="/user/login">ds</Link>
-                </div>
-            )}
+            rightContentRender={() => (<RightContent/>)}
             menuItemRender={(item, dom) => (
                 <div onClick={() => setPathname(item.path)}>
                     <Link to={item.path}>{dom}</Link>

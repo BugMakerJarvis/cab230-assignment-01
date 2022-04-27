@@ -167,7 +167,7 @@ const VolcanoInfo = (props) => {
         } else {
             if (volcanoId !== undefined) {
                 try {
-                    getVolcanoInfo(volcanoId).then((res) => {
+                    getVolcanoInfo(volcanoId, localStorage.getItem("token")).then((res) => {
                         setVolcanoInfo(JSON.stringify(res));
                     });
                 } catch (e) {

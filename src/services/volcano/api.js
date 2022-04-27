@@ -16,12 +16,23 @@ export async function getCountries() {
     });
 }
 
-export async function getVolcanoInfo(volcanoId) {
-    return fetch(url + `/volcano/${volcanoId}`, {
-        method: 'GET',
-    }).then((res) => {
-        return res.json()
-    });
+export async function getVolcanoInfo(volcanoId, token) {
+    if (token) {
+        return fetch(url + `/volcano/${volcanoId}`, {
+            method: 'GET',
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        }).then((res) => {
+            return res.json()
+        });
+    } else {
+        return fetch(url + `/volcano/${volcanoId}`, {
+            method: 'GET',
+        }).then((res) => {
+            return res.json()
+        });
+    }
 }
 
 export async function login(body) {

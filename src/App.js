@@ -4,15 +4,18 @@ import {OrderedListOutlined, SmileOutlined, UserOutlined} from "@ant-design/icon
 import {Avatar} from "antd";
 import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {useNavigate} from "react-router";
+import {useLocation, useNavigate} from "react-router";
 
 import Footer from "./components/Footer";
 import Welcome from "./pages/Welcome";
+import VolcanoList from "./pages/volcano/List";
+import NoFoundPage from "./pages/NoFoundPage";
 
 import '@ant-design/pro-form/dist/form.css';
 import '@ant-design/pro-layout/dist/layout.css';
 import '@ant-design/pro-table/dist/table.css';
 import '@ant-design/pro-card/dist/card.css';
+import VolcanoInfo from "./pages/volcano/Info";
 
 function Redirect({to}) {
     let navigate = useNavigate();
@@ -28,20 +31,20 @@ const route = {
             path: '/welcome',
             name: 'Welcome',
             icon: <SmileOutlined/>,
-            component: './Welcome',
         },
         {
             path: '/volcano/list',
             name: 'Volcano List',
             icon: <OrderedListOutlined/>,
-            component: './VolcanoList',
         },
     ],
 };
 
 function App() {
 
-    const [pathname, setPathname] = useState('/welcome');
+    const currentUrl = new URL(window.location.href).pathname;
+
+    const [pathname, setPathname] = useState(currentUrl === '/' ? '/welcome' : currentUrl);
 
     return (
         <BrowserRouter>
@@ -75,6 +78,9 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Redirect to="/welcome"/>}/>
                     <Route path="/welcome" element={<Welcome/>}/>
+                    <Route path="/volcano/list" element={<VolcanoList/>}/>
+                    <Route path="/volcano/info/:name/:latitude/:longitude" element={<VolcanoInfo/>}/>
+                    <Route path="*" element={<NoFoundPage/>}/>
                 </Routes>
             </ProLayout>
         </BrowserRouter>

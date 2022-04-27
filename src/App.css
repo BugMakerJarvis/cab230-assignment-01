@@ -4,20 +4,6 @@
     height: 100%;
 }
 
-.ant-layout {
-    display: flex;
-    width: 100%;
-    min-height: 100%;
-}
-
-.ant-layout-header {
-    background-color: white;
-}
-
-.site-layout .site-layout-background {
-    background-image: url("https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg");
-}
-
-ant-layout-footer {
-    text-align: center;
+.ant-carousel .slick-dots li {
+    background-color: black;
 }

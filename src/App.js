@@ -1,40 +1,83 @@
 import './App.css';
-import {Layout, Menu, Space} from 'antd';
-import {GithubOutlined, OrderedListOutlined, SmileOutlined} from '@ant-design/icons';
+import ProLayout from '@ant-design/pro-layout';
+import {OrderedListOutlined, SmileOutlined, UserOutlined} from "@ant-design/icons";
+import {Avatar} from "antd";
+import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router";
 
-const {Header, Content, Footer} = Layout;
+import Footer from "./components/Footer";
+import Welcome from "./pages/Welcome";
 
-const items = [
-    {key: "Welcome", label: "Welcome", icon: <SmileOutlined/>},
-    {key: "Volcano List", label: "Volcano List", icon: <OrderedListOutlined/>},
-];
+import '@ant-design/pro-form/dist/form.css';
+import '@ant-design/pro-layout/dist/layout.css';
+import '@ant-design/pro-table/dist/table.css';
+import '@ant-design/pro-card/dist/card.css';
+
+function Redirect({to}) {
+    let navigate = useNavigate();
+    useEffect(() => {
+        navigate(to);
+    });
+    return null;
+}
+
+const route = {
+    routes: [
+        {
+            path: '/welcome',
+            name: 'Welcome',
+            icon: <SmileOutlined/>,
+            component: './Welcome',
+        },
+        {
+            path: '/volcano/list',
+            name: 'Volcano List',
+            icon: <OrderedListOutlined/>,
+            component: './VolcanoList',
+        },
+    ],
+};
 
 function App() {
+
+    const [pathname, setPathname] = useState('/welcome');
+
     return (
-        <Layout>
-            <Header style={{position: 'fixed', zIndex: 1, width: '100%'}}>
-                <Space direction="horizontal">
-                    <Menu
-                        mode="horizontal"
-                        defaultSelectedKeys={['Welcome']}
-                        items={items}
-                    />
-                </Space>
-            </Header>
-            <Content className="site-layout" style={{padding: '0 50px', marginTop: 64}}>
-                <div className="site-layout-background" style={{padding: 24, minHeight: 380}}>
-                    Content
-                </div>
-            </Content>
-            <Footer style={{textAlign: 'center'}}>
-                <Space direction="vertical">
-                    <GithubOutlined onClick={() => {
-                        window.open("https://github.com/BugMakerJarvis/cab230-assignment-01")
-                    }}/>
-                    <span>CAB230 Assignment-01 ©2022 Created by Jarvis</span>
-                </Space>
-            </Footer>
-        </Layout>
+        <BrowserRouter>
+            <ProLayout
+                location={{pathname}}
+                navTheme="light"
+                layout="top"
+                contentWidth="Fluid"
+                fixedHeader={false}
+                fixSiderbar={false}
+                splitMenus={false}
+                colorWeak={false}
+                title="volcanoes of the world"
+                logo={false}
+                menuRender={false}
+                menuHeaderRender={false}
+                iconfontUrl=""
+                route={route}
+                footerRender={() => <Footer/>}
+                rightContentRender={() => (
+                    <div>
+                        <Avatar shape="square" size="default" icon={<UserOutlined/>}/>
+                    </div>
+                )}
+                menuItemRender={(item, dom) => (
+                    <div onClick={() => setPathname(item.path)}>
+                        <Link to={item.path}>{dom}</Link>
+                    </div>
+                )}
+            >
+                <Routes>
+                    <Route path="/" element={<Redirect to="/welcome"/>}/>
+                    <Route path="/welcome" element={<Welcome/>}/>
+                </Routes>
+            </ProLayout>
+        </BrowserRouter>
     );
 }
 

@@ -1,0 +1,17 @@
+.container {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    background-image: url("https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/DCTM_Penguin_UK_DK_AL327682_tso68j.jpg");
+}
+
+.ant-form-item-label > label {
+    color: white;
+    font-size: x-large;
+}
+
+.ant-form-item-explain-error {
+    color: white;
+    text-align: end;
+}

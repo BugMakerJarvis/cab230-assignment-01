@@ -4,8 +4,9 @@ import ProCard from '@ant-design/pro-card';
 import ProTable from '@ant-design/pro-table';
 import {getCountries, getVolcanoes, getVolcanoInfo} from '../../../services/volcano/api';
 import {AutoComplete, Button, Descriptions, Divider, Form, message, Select} from 'antd';
-import styles from './index.less';
+import styles from './index.css';
 import {Link} from "react-router-dom";
+import {BarChartOutlined} from "@ant-design/icons";
 
 const {Option} = Select;
 
@@ -86,6 +87,7 @@ const VolcanoTable = (props) => {
             search={false}
             pagination={{defaultPageSize: 10}}
             rowClassName={(record) => {
+                // Todo: does not work
                 return record.id === selectedVolcanoId ? styles['split-row-select-active'] : '';
             }}
             toolBarRender={() => [
@@ -189,7 +191,15 @@ const VolcanoInfo = (props) => {
 
     return volcanoId ? (
         <>
-            <Descriptions title="Volcano Info" bordered column={4}>
+            <Descriptions title="Volcano Info" bordered column={4}
+                          extra={
+                              <Button type="primary" icon={<BarChartOutlined/>}>
+                                  <Link to={`/volcano/info/${name}/${latitude}/${longitude}`}>
+                                      <span style={{color: "white", marginLeft: 8}}>View More</span>
+                                  </Link>
+                              </Button>
+                          }
+            >
                 <Descriptions.Item label="Name" span={4}>
                     {name}
                 </Descriptions.Item>
@@ -218,12 +228,6 @@ const VolcanoInfo = (props) => {
                     {longitude}
                 </Descriptions.Item>
             </Descriptions>
-            <Divider/>
-            <div style={{marginTop: 16, textAlign: "center"}}>
-                <Link to={`/volcano/info/${name}/${latitude}/${longitude}`}>
-                    click here for more information
-                </Link>
-            </div>
         </>
     ) : null;
 };

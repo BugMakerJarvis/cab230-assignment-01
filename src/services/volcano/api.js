@@ -30,7 +30,7 @@ export async function login(body) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: body,
+        body: JSON.stringify(body),
     }).then((res) => {
         return res.json()
     });
@@ -42,7 +42,7 @@ export async function register(body) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: body,
+        body: JSON.stringify(body),
     }).then((res) => {
         return res.json()
     });

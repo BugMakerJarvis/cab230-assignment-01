@@ -2,7 +2,7 @@ import React from 'react';
 import {PageContainer} from '@ant-design/pro-layout';
 import {Carousel, Col, Image, Row} from 'antd';
 import ProCard from '@ant-design/pro-card';
-import './index.less';
+import './index.css';
 
 const VolcanoGlimpse = ({title, url, description}) => {
     return (

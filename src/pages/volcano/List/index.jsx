@@ -167,7 +167,7 @@ const VolcanoInfo = (props) => {
         } else {
             if (volcanoId !== undefined) {
                 try {
-                    getVolcanoInfo(volcanoId, localStorage.getItem("token")).then((res) => {
+                    getVolcanoInfo(volcanoId).then((res) => {
                         setVolcanoInfo(JSON.stringify(res));
                     });
                 } catch (e) {
@@ -194,7 +194,7 @@ const VolcanoInfo = (props) => {
             <Descriptions title="Volcano Info" bordered column={4}
                           extra={
                               <Button type="primary" icon={<BarChartOutlined/>}>
-                                  <Link to={`/volcano/info/${name}/${latitude}/${longitude}`}>
+                                  <Link to={`/volcano/info/${volcanoId}/${latitude}/${longitude}`}>
                                       <span style={{color: "white", marginLeft: 8}}>View More</span>
                                   </Link>
                               </Button>

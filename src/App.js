@@ -69,7 +69,7 @@ function App() {
                 <Route path="/" element={<Redirect to="/welcome"/>}/>
                 <Route path="/welcome" element={<Welcome/>}/>
                 <Route path="/volcano/list" element={<VolcanoList/>}/>
-                <Route path="/volcano/info/:name/:latitude/:longitude" element={<VolcanoInfo/>}/>
+                <Route path="/volcano/info/:volcanoId/:latitude/:longitude" element={<VolcanoInfo/>}/>
                 <Route path="*" element={<NoFoundPage/>}/>
             </Routes>
         </ProLayout>

@@ -11,14 +11,19 @@ import '@ant-design/pro-table/dist/table.css';
 import '@ant-design/pro-card/dist/card.css';
 import Login from "./pages/user/Login";
 
+import {ConfigProvider} from 'antd';
+import enUS from 'antd/lib/locale/en_US';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <Routes>
-                <Route path="/user/login/:isLogin" element={<Login/>}/>
-                <Route path="*" element={<App/>}/>
-            </Routes>
+            <ConfigProvider locale={enUS}>
+                <Routes>
+                    <Route path="/user/login/:isLogin" element={<Login/>}/>
+                    <Route path="*" element={<App/>}/>
+                </Routes>
+            </ConfigProvider>
         </BrowserRouter>
     </React.StrictMode>
 );

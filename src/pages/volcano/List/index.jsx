@@ -30,7 +30,7 @@ const VolcanoTable = (props) => {
                 targets.push({value: v, label: v});
             }
         });
-        console.log(targets);
+        // console.log(targets);
         setACOptions(targets);
     };
 

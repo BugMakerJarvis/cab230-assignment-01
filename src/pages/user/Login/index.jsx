@@ -24,9 +24,11 @@ const Login = () => {
                 pushToWelcome();
                 if (isLogin) {
                     message.success('Login successful!');
+                    localStorage.setItem("registered", "true");
                     localStorage.setItem("token", res.token);
                     localStorage.setItem("currentUserEmail", values.email);
                 } else {
+                    localStorage.setItem("registered", "true");
                     message.success('Register successful!');
                 }
             } else {

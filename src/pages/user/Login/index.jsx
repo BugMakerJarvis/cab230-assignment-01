@@ -1,12 +1,15 @@
 import {Button, Card, Col, Form, Input, message, Row} from 'antd';
 import React from 'react';
-import {login} from '../../../services/volcano/api';
+import {login, register} from '../../../services/volcano/api';
 import './index.css';
 import {MailOutlined, UnlockOutlined} from "@ant-design/icons";
-import {useNavigate} from "react-router";
+import {useNavigate, useParams} from "react-router";
 
 const Login = () => {
     const navigate = useNavigate();
+    const params = useParams();
+
+    const isLogin = params.isLogin === "true";
 
     function pushToWelcome() {
         navigate('/welcome')
@@ -14,22 +17,24 @@ const Login = () => {
 
     const handleSubmit = async (values) => {
         try {
-            // log in
-            const res = await login({...values});
+            // log in || register
+            const res = isLogin ? await login({...values}) : await register({...values});
 
             if (!res.error) {
                 pushToWelcome();
-                message.success('Login successful!');
-                localStorage.setItem("token", res.token);
-                localStorage.setItem("currentUserEmail", values.email);
+                if (isLogin) {
+                    message.success('Login successful!');
+                    localStorage.setItem("token", res.token);
+                    localStorage.setItem("currentUserEmail", values.email);
+                } else {
+                    message.success('Register successful!');
+                }
+            } else {
+                message.error(res.message);
             }
         } catch (error) {
-            message.error('Login failed, please try again!');
+            message.error(isLogin ? 'Login failed, please try again!' : 'Register failed, please try again!');
         }
-    };
-
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
     };
 
     return (
@@ -45,7 +50,7 @@ const Login = () => {
                         style={{textAlign: "center", backgroundColor: "transparent"}}
                         bordered={false}
                     >
-                        <Form size="large" onFinish={handleSubmit} onFinishFailed={onFinishFailed}>
+                        <Form size="large" onFinish={handleSubmit}>
                             <Form.Item
                                 label="Email"
                                 name="email"
@@ -72,7 +77,7 @@ const Login = () => {
                             </Form.Item>
                             <Form.Item>
                                 <Button type="primary" size="large" htmlType="submit">
-                                    Login
+                                    {isLogin ? "Login" : "Register"}
                                 </Button>
                             </Form.Item>
                         </Form>

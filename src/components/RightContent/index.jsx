@@ -9,10 +9,10 @@ const RightContent = () => {
 
     const loginAndRegister = (
         <Space direction="horizontal">
-            <Link to="/user/login">
+            <Link to="/user/login/true">
                 <Button type="primary" icon={<LoginOutlined/>}>Login</Button>
             </Link>
-            <Link to="/user/login">
+            <Link to={`/user/login/false`}>
                 <Button type="primary" icon={<UserAddOutlined/>}>Register</Button>
             </Link>
         </Space>

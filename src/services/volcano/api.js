@@ -48,7 +48,7 @@ export async function login(body) {
 }
 
 export async function register(body) {
-    return fetch(url + '/user/login', {
+    return fetch(url + '/user/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

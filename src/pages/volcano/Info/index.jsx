@@ -46,7 +46,7 @@ const VolcanoInfo = () => {
         } catch (e) {
             console.log(e.message);
         }
-    }, [params.volcanoId]);
+    }, []);
 
     const {
         name,

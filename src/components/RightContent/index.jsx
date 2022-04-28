@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {LoginOutlined, LogoutOutlined} from "@ant-design/icons";
+import {LoginOutlined, LogoutOutlined, UserAddOutlined} from "@ant-design/icons";
 import {Link} from "react-router-dom";
 import {Avatar, Button, Dropdown, Menu, Space} from "antd";
 
@@ -7,16 +7,19 @@ const RightContent = () => {
 
     const [currentUserEmail, setCurrentUserEmail] = useState(localStorage.getItem("currentUserEmail"));
 
-    const login = (
-        <div>
+    const loginAndRegister = (
+        <Space direction="horizontal">
             <Link to="/user/login">
-                <Button type="dashed" icon={<LoginOutlined/>}>Login</Button>
+                <Button type="primary" icon={<LoginOutlined/>}>Login</Button>
             </Link>
-        </div>
+            <Link to="/user/login">
+                <Button type="primary" icon={<UserAddOutlined/>}>Register</Button>
+            </Link>
+        </Space>
     );
 
     if (!currentUserEmail) {
-        return login;
+        return loginAndRegister;
     }
 
     const menu = (

@@ -7,3 +7,23 @@
 .ant-carousel .slick-dots li {
     background-color: black;
 }
+
+.ant-btn-primary {
+    color: white;
+    background: #FA541C;
+    border-color: #FA541C;
+}
+
+.ant-btn-primary:hover, .ant-btn-primary:focus {
+    color: white;
+    background: #ff7a45;
+    border-color: #ff7a45;
+}
+
+.ant-menu-horizontal > .ant-menu-item-selected a {
+    color: #FA541C;
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected::after {
+    border-bottom: 2px solid #FA541C;
+}

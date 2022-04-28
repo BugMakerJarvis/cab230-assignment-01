@@ -12,9 +12,9 @@ const RightContent = () => {
             <Link to="/user/login/true">
                 <Button type="primary" icon={<LoginOutlined/>}>Login</Button>
             </Link>
-            {localStorage.getItem("registered") === "true" ? null : <Link to={`/user/login/false`}>
+            <Link to={`/user/login/false`}>
                 <Button type="primary" icon={<UserAddOutlined/>}>Register</Button>
-            </Link>}
+            </Link>
         </Space>
     );
 

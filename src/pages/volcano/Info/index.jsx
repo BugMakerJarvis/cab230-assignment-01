@@ -41,7 +41,6 @@ const VolcanoInfo = () => {
     const [volcanoInfo, setVolcanoInfo] = useState('{}');
 
     useEffect(() => {
-        console.log("ccc")
         try {
             getVolcanoInfo(params.volcanoId, localStorage.getItem("token")).then((res) => {
                 setVolcanoInfo(JSON.stringify(res));
@@ -49,7 +48,7 @@ const VolcanoInfo = () => {
         } catch (e) {
             console.log(e.message);
         }
-    }, [params.volcanoId]);
+    }, []);
 
     const {
         name,

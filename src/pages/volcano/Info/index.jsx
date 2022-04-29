@@ -27,15 +27,7 @@ ChartJS.register(
 
 const VolcanoInfo = () => {
     // get params from url "/volcano/info/:volcanoId/:latitude/:longitude"
-    /**
-     * Todo: why including latitude and longitude?
-     *
-     * I don't know why the page will be rendered twice, and if I get latitude and longitude from getVolcanoInfo in useEffect rather than url,
-     * the first render will fail,
-     * because the console told me latitude=NaN longitude=NaN.
-     *
-     * I have searched a lot, someone said rendering twice is mean to be safer??
-     */
+
     const params = useParams();
 
     const [volcanoInfo, setVolcanoInfo] = useState('{}');

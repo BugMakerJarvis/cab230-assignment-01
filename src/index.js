@@ -16,16 +16,26 @@ import enUS from 'antd/lib/locale/en_US';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <ConfigProvider locale={enUS}>
-                <Routes>
-                    <Route path="/user/login/:isLogin" element={<Login/>}/>
-                    <Route path="*" element={<App/>}/>
-                </Routes>
-            </ConfigProvider>
-        </BrowserRouter>
-    </React.StrictMode>
+    /**
+     * Todo: why pages will be rendered twice?
+     *
+     * I don't know why the page will be rendered twice, and the request will be sent twice.
+     *
+     * I have searched a lot, someone said rendering twice is mean to be safer??
+     *
+     * I get the answer now. It is caused by React.StrictMode which is in the index.js.
+     * Just delete it.
+     */
+    // <React.StrictMode>
+    <BrowserRouter>
+        <ConfigProvider locale={enUS}>
+            <Routes>
+                <Route path="/user/login/:isLogin" element={<Login/>}/>
+                <Route path="*" element={<App/>}/>
+            </Routes>
+        </ConfigProvider>
+    </BrowserRouter>
+    // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

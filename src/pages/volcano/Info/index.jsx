@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {PageContainer} from '@ant-design/pro-layout';
 import ProCard from '@ant-design/pro-card';
 import {Map, Marker, ZoomControl} from 'pigeon-maps';
-import {Descriptions, Tag} from 'antd';
-import {useParams} from "react-router";
+import {Button, Descriptions, Tag} from 'antd';
+import {useNavigate, useParams} from "react-router";
 import {getVolcanoInfo} from "../../../services/volcano/api";
 import {Bar} from 'react-chartjs-2';
 import {
@@ -29,6 +29,8 @@ const VolcanoInfo = () => {
     // get params from url "/volcano/info/:volcanoId/:latitude/:longitude"
 
     const params = useParams();
+
+    const navigate = useNavigate();
 
     const [volcanoInfo, setVolcanoInfo] = useState('{}');
 
@@ -92,7 +94,11 @@ const VolcanoInfo = () => {
 
     return (
         <PageContainer title={`Here is the Volcano Info Page!`}>
-            <ProCard direction="column" title={name}>
+            <ProCard direction="column" title={name} extra={
+                <Button type="primary" onClick={() => navigate(-1)}>
+                    Go Back
+                </Button>
+            }>
                 <ProCard layout="center" type="inner">
                     <Map
                         height={512}

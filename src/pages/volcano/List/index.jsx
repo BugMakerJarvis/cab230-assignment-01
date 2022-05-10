@@ -103,7 +103,7 @@ const VolcanoTable = (props) => {
                         />
                     </Form.Item>
                     <Form.Item label="Populated within">
-                        <Select style={{width: 75}} defaultValue="" onChange={(v) => setPopulatedWithin(v)}>
+                        <Select style={{width: 100}} defaultValue="" onChange={(v) => setPopulatedWithin(v)}>
                             <Option value="">All</Option>
                             <Option value="5km">5 km</Option>
                             <Option value="10km">10 km</Option>
@@ -126,7 +126,7 @@ const VolcanoTable = (props) => {
                                         message.success(
                                             populatedWithin === ''
                                                 ? `Search "country: ${targetCountry}" successfully!`
-                                                : `Search "country: ${targetCountry}, populated within: ${populatedWithin}" successfully!`,
+                                                : `Search "country: ${targetCountry}, populated within: ${populatedWithin}" successful!`,
                                         );
                                     } else {
                                         message.warning(

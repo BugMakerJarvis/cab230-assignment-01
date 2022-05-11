@@ -9,7 +9,7 @@ const Login = () => {
     const navigate = useNavigate();
     const params = useParams();
 
-    const isLogin = params.isLogin === "true";
+    const isLogin = params.loginOrRegister === "login";
 
     function pushToWelcome() {
         navigate('/welcome')

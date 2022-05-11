@@ -30,7 +30,7 @@ root.render(
     <BrowserRouter>
         <ConfigProvider locale={enUS}>
             <Routes>
-                <Route path="/user/login/:isLogin" element={<Login/>}/>
+                <Route path="/user/:loginOrRegister" element={<Login/>}/>
                 <Route path="*" element={<App/>}/>
             </Routes>
         </ConfigProvider>

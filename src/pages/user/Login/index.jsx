@@ -17,7 +17,7 @@ const Login = () => {
 
     const handleSubmit = async (values) => {
         try {
-            // log in || register
+            // log in or register
             const res = isLogin ? await login({...values}) : await register({...values});
 
             if (!res.error) {

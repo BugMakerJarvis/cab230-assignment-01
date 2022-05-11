@@ -27,7 +27,6 @@ ChartJS.register(
 
 const VolcanoInfo = () => {
     // get params from url "/volcano/info/:volcanoId/:latitude/:longitude"
-
     const params = useParams();
 
     const navigate = useNavigate();
@@ -62,9 +61,6 @@ const VolcanoInfo = () => {
 
     const [center, setCenter] = useState([parseFloat(params.latitude), parseFloat(params.longitude)]);
     const [zoom, setZoom] = useState(15);
-    // const [hue, setHue] = useState(0);
-    // const color = `hsl(${hue % 360}deg 39% 70%)`;
-
 
     const options = {
         responsive: true,
@@ -118,8 +114,6 @@ const VolcanoInfo = () => {
                             width={48}
                             color="#FA541C"
                             anchor={[parseFloat(params.latitude), parseFloat(params.longitude)]}
-                            // onClick={() => setHue(hue + 20)}
-                            // onMouseOver={() => {}}
                         />
                     </Map>
                 </ProCard>

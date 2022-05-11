@@ -192,11 +192,11 @@ const VolcanoInfo = (props) => {
         <>
             <Descriptions title="Volcano Info" bordered column={4}
                           extra={
-                              <Button type="primary" icon={<BarChartOutlined/>}>
-                                  <Link to={`/volcano/info/${volcanoId}/${latitude}/${longitude}`}>
+                              <Link to={`/volcano/info/${volcanoId}`}>
+                                  <Button type="primary" icon={<BarChartOutlined/>}>
                                       <span style={{color: "white", marginLeft: 8}}>View More</span>
-                                  </Link>
-                              </Button>
+                                  </Button>
+                              </Link>
                           }
             >
                 <Descriptions.Item label="Name" span={4}>

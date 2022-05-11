@@ -25,8 +25,41 @@ ChartJS.register(
     Legend
 );
 
+const MyMap = (props) => {
+    const {latitude, longitude} = props;
+
+    const [center, setCenter] = useState([0, 0]);
+    const [zoom, setZoom] = useState(15);
+
+    useEffect(() => {
+        setCenter([parseFloat(latitude), parseFloat(longitude)])
+    }, [latitude, longitude]);
+
+    return (
+        <Map
+            height={512}
+            center={center}
+            zoom={zoom}
+            onBoundsChanged={({center, zoom}) => {
+                setCenter(center);
+                setZoom(zoom);
+            }}
+        >
+            <div style={{textAlign: 'end', margin: 18}}>
+                <Tag color="cyan">{center[0].toFixed(3)}</Tag>
+                <Tag color="cyan">{center[1].toFixed(3)}</Tag>
+            </div>
+            <ZoomControl/>
+            <Marker
+                width={48}
+                color="#FA541C"
+                anchor={[parseFloat(latitude), parseFloat(longitude)]}
+            />
+        </Map>
+    )
+}
+
 const VolcanoInfo = () => {
-    // get params from url "/volcano/info/:volcanoId/:latitude/:longitude"
     const params = useParams();
 
     const navigate = useNavigate();
@@ -58,9 +91,6 @@ const VolcanoInfo = () => {
         population_30km,
         population_100km,
     } = JSON.parse(volcanoInfo);
-
-    const [center, setCenter] = useState([parseFloat(params.latitude), parseFloat(params.longitude)]);
-    const [zoom, setZoom] = useState(15);
 
     const options = {
         responsive: true,
@@ -96,26 +126,7 @@ const VolcanoInfo = () => {
                 </Button>
             }>
                 <ProCard layout="center" type="inner">
-                    <Map
-                        height={512}
-                        center={center}
-                        zoom={zoom}
-                        onBoundsChanged={({center, zoom}) => {
-                            setCenter(center);
-                            setZoom(zoom);
-                        }}
-                    >
-                        <div style={{textAlign: 'end', margin: 18}}>
-                            <Tag color="cyan">{center[0].toFixed(3)}</Tag>
-                            <Tag color="cyan">{center[1].toFixed(3)}</Tag>
-                        </div>
-                        <ZoomControl/>
-                        <Marker
-                            width={48}
-                            color="#FA541C"
-                            anchor={[parseFloat(params.latitude), parseFloat(params.longitude)]}
-                        />
-                    </Map>
+                    <MyMap latitude={latitude} longitude={longitude}/>
                 </ProCard>
                 <ProCard layout="center" type="inner">
                     <Descriptions title="Volcano Info" column={4}>

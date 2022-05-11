@@ -55,7 +55,8 @@ const VolcanoTable = (props) => {
             title: 'ID',
             key: 'id',
             dataIndex: 'id',
-            hideInTable: true,
+            // hideInTable: true,
+            align: 'center',
         },
         {
             title: 'Name',

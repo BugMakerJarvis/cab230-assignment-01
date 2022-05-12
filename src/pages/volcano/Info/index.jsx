@@ -45,10 +45,6 @@ const MyMap = (props) => {
                 setZoom(zoom);
             }}
         >
-            <div style={{textAlign: 'end', margin: 18}}>
-                <Tag color="cyan">{center[0].toFixed(3)}</Tag>
-                <Tag color="cyan">{center[1].toFixed(3)}</Tag>
-            </div>
             <ZoomControl/>
             <Marker
                 width={48}
@@ -74,6 +70,7 @@ const VolcanoInfo = () => {
         } catch (e) {
             console.log(e.message);
         }
+        // eslint-disable-next-line
     }, []);
 
     const {

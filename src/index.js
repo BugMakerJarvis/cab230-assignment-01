@@ -20,7 +20,8 @@ root.render(
         <BrowserRouter>
             <ConfigProvider locale={enUS}>
                 <Routes>
-                    <Route path="/user/:loginOrRegister" element={<Login/>}/>
+                    <Route path="/user/login" element={<Login/>}/>
+                    <Route path="/user/register" element={<Login/>}/>
                     <Route path="*" element={<App/>}/>
                 </Routes>
             </ConfigProvider>

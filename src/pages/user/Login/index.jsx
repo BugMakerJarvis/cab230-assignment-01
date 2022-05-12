@@ -3,13 +3,12 @@ import React from 'react';
 import {login, register} from '../../../services/volcano/api';
 import './index.css';
 import {MailOutlined, UnlockOutlined} from "@ant-design/icons";
-import {useNavigate, useParams} from "react-router";
+import {useNavigate} from "react-router";
 
 const Login = () => {
     const navigate = useNavigate();
-    const params = useParams();
 
-    const isLogin = params.loginOrRegister === "login";
+    const isLogin = new URL(window.location.href).pathname.includes("login");
 
     function pushToWelcome() {
         navigate('/welcome')

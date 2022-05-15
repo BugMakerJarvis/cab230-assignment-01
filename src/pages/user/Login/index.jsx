@@ -26,13 +26,13 @@ const Login = () => {
                     localStorage.setItem("token", res.token);
                     localStorage.setItem("currentUserEmail", values.email);
                 } else {
-                    message.success('Register successful!');
+                    message.success('Registration successful!');
                 }
             } else {
                 message.error(res.message);
             }
         } catch (error) {
-            message.error(isLogin ? 'Login failed, please try again!' : 'Register failed, please try again!');
+            message.error(isLogin ? 'Login failed, please try again!' : 'Registration failed, please try again!');
         }
     };
 

@@ -1,4 +1,4 @@
-import {Button, Card, Col, Form, Input, message, Row} from 'antd';
+import {Button, Card, Col, Form, Input, message, Row, Space} from 'antd';
 import React from 'react';
 import {login, register} from '../../../services/volcano/api';
 import './index.css';
@@ -75,9 +75,14 @@ const Login = () => {
                                 <Input.Password prefix={<UnlockOutlined/>} placeholder="Please input your password"/>
                             </Form.Item>
                             <Form.Item>
-                                <Button type="primary" size="large" htmlType="submit">
-                                    {isLogin ? "Login" : "Register"}
-                                </Button>
+                                <Space>
+                                    <Button type="primary" size="large" htmlType="submit">
+                                        {isLogin ? "Login" : "Register"}
+                                    </Button>
+                                    <Button type="primary" size="large" onClick={() => navigate(-1)}>
+                                        Cancel
+                                    </Button>
+                                </Space>
                             </Form.Item>
                         </Form>
                     </Card>

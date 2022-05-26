@@ -48,6 +48,7 @@ const VolcanoTable = (props) => {
         } catch (e) {
             console.log(e.message);
         }
+        // eslint-disable-next-line
     }, []);
 
     const columns = [
